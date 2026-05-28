@@ -8,9 +8,8 @@
 
 <p align="center">
   <a href="https://haruk1y.github.io/pine-icml/"><img alt="Project Page" src="https://img.shields.io/badge/Project-Page-2563eb"></a>
-  <a href="#"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-coming_soon-b31b1b"></a>
-  <a href="#"><img alt="Paper" src="https://img.shields.io/badge/Paper-coming_soon-111827"></a>
-  <a href="#"><img alt="Code" src="https://img.shields.io/badge/Code-coming_soon-111827?logo=github"></a>
+  <a href="https://arxiv.org/abs/2605.28068"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-2605.28068-b31b1b"></a>
+  <a href="https://github.com/Haruk1y/pine"><img alt="Code" src="https://img.shields.io/badge/Code-GitHub-111827?logo=github"></a>
   <img alt="ICML 2026" src="https://img.shields.io/badge/ICML'26-Main_Conference-10b981">
 </p>
 
@@ -31,9 +30,8 @@ Tree ensembles remain strong and interpretable models for tabular data, but prun
 ## Links
 
 - [Project page](https://haruk1y.github.io/pine-icml/)
-- arXiv: coming soon
-- Paper: coming soon
-- Code: coming soon
+- [arXiv](https://arxiv.org/abs/2605.28068)
+- [Code](https://github.com/Haruk1y/pine)
 
 ## Local Preview
 
