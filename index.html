@@ -163,6 +163,17 @@
                       <span>arXiv</span>
                     </a>
                   </span>
+
+                  <span class="link-block">
+                    <a href="https://icml.cc/virtual/2026/poster/64585" target="_blank" rel="noopener"
+                       class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-chalkboard"></i>
+                      </span>
+                      <span>ICML</span>
+                    </a>
+                  </span>
+
                 </div>
               </div>
             </div>
@@ -181,6 +192,71 @@
                 Tree ensembles are machine learning models with strong predictive performance and interpretability, and remain widely used for tabular data. Standard pruning methods for tree ensembles typically optimize an accuracy-compression trade-off and may change a subset of predictions, potentially compromising decision consistency. Faithful pruning methods address this issue by preserving prediction equivalence over the entire input space, but this requirement leads to lower compression ratios. We propose PINE, a pruning method that provides strong guarantees within an in-distribution region. PINE preserves prediction equivalence within this region and controls the region size using a single parameter &epsilon; via conformal calibration. Experiments on 12 public tabular datasets show that PINE improves the compression ratio by up to 30% while maintaining a comparable rate of prediction equivalence to existing faithful pruning methods. As a result, PINE achieves an improved equivalence-compression trade-off.
               </p>
             </div>
+          </div>
+        </div>
+
+        <figure class="paper-figure tldr-figure">
+          <img src="static/images/paper/pine_tldr.png" alt="Comparison between standard faithful pruning over the full input space and PINE's in-distribution faithful pruning.">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="method">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Method</h2>
+            <div class="content has-text-justified">
+              <p>
+                PINE keeps FIPE's iterative Pruner/Oracle structure, but restricts the Oracle to a conformal in-distribution region. A Chow-Liu tree fitted on a training split defines a negative log-likelihood score, split conformal calibration sets the threshold, and the Oracle only searches for prediction-equivalence violations inside the calibrated region.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <figure class="paper-figure method-figure">
+          <img src="static/images/paper/pine_pipeline_trimmed.png" alt="PINE pipeline: Chow-Liu plausible score, split conformal threshold, and FIPE Oracle restricted to the calibrated in-distribution region.">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="results">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Results</h2>
+            <div class="content has-text-justified">
+              <p>
+                Across 12 public tabular datasets with XGBoost ensembles, PINE-CL achieves high prediction fidelity at substantially higher pruning rates than accuracy-oriented pruning baselines. The calibrated in-distribution region tracks the target coverage controlled by α, giving a direct knob for the fidelity-compression trade-off.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-stack">
+          <div class="result-block">
+            <h3>Fidelity-compression trade-off</h3>
+            <p>
+              PINE-CL moves the operating point toward higher pruning rates while keeping prediction fidelity close to the original ensemble. In contrast, pruning methods without prediction-equivalence constraints can preserve test accuracy yet change many individual predictions.
+            </p>
+            <figure class="paper-figure legend-figure">
+              <img src="static/images/paper/legend_fipe_cl_pypruning.png" alt="Legend for FIPE, PINE-CL, and pruning baselines.">
+            </figure>
+            <figure class="paper-figure">
+              <img src="static/images/paper/fidelity_pruning.png" alt="Fidelity versus pruning rate across 12 datasets comparing PINE-CL with pruning baselines.">
+              <figcaption>Fidelity versus pruning rate across 12 tabular datasets. Higher and farther right is better.</figcaption>
+            </figure>
+          </div>
+
+          <div class="result-block">
+            <h3>Conformal control of the in-distribution region</h3>
+            <p>
+              The parameter α controls how broad the certified region is. Smaller values keep a larger in-distribution region, while larger values narrow the region and allow more aggressive pruning.
+            </p>
+            <figure class="paper-figure coverage-figure">
+              <img src="static/images/paper/coverage_vs_alpha.png" alt="PINE-CL test coverage decreases as α increases, tracking the conformal target coverage.">
+              <figcaption>Empirical test coverage of the calibrated Chow-Liu region as α varies.</figcaption>
+            </figure>
           </div>
         </div>
       </div>
